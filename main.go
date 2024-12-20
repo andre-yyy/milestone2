@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"os"
 
+	"milestone2/categories"
+	category_handler "milestone2/categories/handlers"
 	"milestone2/coins"
 	coin_handler "milestone2/coins/handlers"
 	"milestone2/db"
@@ -78,6 +80,13 @@ func main() {
 
 	topupRepository := topups.NewTopupRepository(db)
 	topupService := topups.NewTopupService(topupRepository)
+
+	categoryRepository := categories.NewCategoryRepository(db)
+	categoryService := categories.NewCategoryService(categoryRepository)
+
+	e.GET("/categories", func(c echo.Context) error {
+		return category_handler.GetAllCategories(c, categoryService)
+	})
 
 	e.GET("/cities", func(c echo.Context) error {
 		return ongkir_handler.GetAllCities(c)
