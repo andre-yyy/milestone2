@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
+    <title>Milestone 2</title>
+</head>
+
+<body>
+
+    <div id="app" class="h-full" background-color: rgb(235, 235, 235);">
+
+        <div class="flex">
+            <div class="bg-slate-300 h-screen p-5 pt-8 duration-300 relative" :class="isSidebarOpen ? 'w-44' : 'w-20'">
+                <span class="material-symbols-rounded bg-white p-1 rounded-full absolute -right-3 top-9 border border-green-500 cursor-pointer" :class="isSidebarOpen ? '' : 'rotate-180'" @click="isSidebarOpen=!isSidebarOpen">arrow_back</span>
+                <div class="inline-flex">
+                    <span class="material-symbols-rounded text-2xl rounded cursor-pointer block float-left mr-2 text-teal-400">local_hospital</span>
+                    <h1 class="duration-300 text-white origin-left font-medium text-2xl" :class="isSidebarOpen ? '' : 'scale-0'">Milestone2</h1>
+                </div>
+
+                <div class="flex items-center rounded-md bg-slate-100 mt-6 py-2" :class="isSidebarOpen ? 'px-4' : 'px-2.5'">
+                    <span class="material-symbols-rounded" :class="isSidebarOpen ? 'mr-2' : ''" @click="isSidebarOpen=true">search</span>
+                    <input class="text-base bg-transparent w-full focus:outline-none" type="search" placeholder="Cari.." :class="isSidebarOpen ? '' : 'hidden'">
+                </div>
+
+                <ul>
+                    <template v-for="menu in menuItems">
+                        <li class="">
+                            <router-link :to="menu.route" class="text-gray-700 text-sm flex items-center gap-x-4 cursor-pointer hover:bg-slate-400 rounded-md my-2 p-1.5 hover:text-white" @click="currentPage=menu.route">
+                                <span class="material-symbols-rounded block float-left" :class="{ active : isActive(menu.route)}" >{{ menu.icon }}</span>
+                            <span class="text-base font-medium flex-1" :class="isSidebarOpen ? '' : 'hidden', { active : isActive(menu.route)}">{{ menu.title }}</span>
+                            </router-link>       
+                        </li>
+                    </template>
+                </ul>
+            </div>
+            <div class="p-5">
+                <router-view></router-view>
+            </div>      
+        </div>
+    </div>
+    <script>
+        function _0x3ac4(_0x38cfc5,_0x3776a2){const _0x5926e4=_0x5926();return _0x3ac4=function(_0x3ac47f,_0x3faf99){_0x3ac47f=_0x3ac47f-0x103;let _0x339ceb=_0x5926e4[_0x3ac47f];return _0x339ceb;},_0x3ac4(_0x38cfc5,_0x3776a2);}const _0x3fe62e=_0x3ac4;(function(_0x7472f6,_0x4fc887){const _0x4dfe1b=_0x3ac4,_0x2633d6=_0x7472f6();while(!![]){try{const _0x410192=parseInt(_0x4dfe1b(0x111))/0x1*(-parseInt(_0x4dfe1b(0x113))/0x2)+parseInt(_0x4dfe1b(0x11a))/0x3*(parseInt(_0x4dfe1b(0x11c))/0x4)+-parseInt(_0x4dfe1b(0x107))/0x5+parseInt(_0x4dfe1b(0x106))/0x6+-parseInt(_0x4dfe1b(0x116))/0x7*(-parseInt(_0x4dfe1b(0x105))/0x8)+parseInt(_0x4dfe1b(0x103))/0x9+-parseInt(_0x4dfe1b(0x10a))/0xa*(parseInt(_0x4dfe1b(0x109))/0xb);if(_0x410192===_0x4fc887)break;else _0x2633d6['push'](_0x2633d6['shift']());}catch(_0x59dc53){_0x2633d6['push'](_0x2633d6['shift']());}}}(_0x5926,0x79172),document[_0x3fe62e(0x110)](_0x3fe62e(0x119),function(){const _0x5cf951=_0x3fe62e,_0x101bcd=Vue[_0x5cf951(0x10d)]({'setup'(){const _0xecc2b7=_0x5cf951,_0x3a8f4e=Vue['ref'](0x0),_0x2db056=Vue['ref'](!![]),_0x3e580b=Vue['ref']([{'title':_0xecc2b7(0x115),'icon':'home','route':'/'},{'title':_0xecc2b7(0x112),'icon':_0xecc2b7(0x11b),'route':_0xecc2b7(0x11d)}]);let _0x2c2155=Vue['ref']([]),_0x2ed78c=Vue[_0xecc2b7(0x108)]({}),_0x431bb7=Vue[_0xecc2b7(0x108)](''),_0x134a21=Vue[_0xecc2b7(0x108)]('');return{'name':_0x3a8f4e,'allCustomers':_0x2c2155,'selectedCustomer':_0x2ed78c,'isSidebarOpen':_0x2db056,'menuItems':_0x3e580b,'currentPage':_0x431bb7};},'methods':{'isActive'(_0x2fdaeb){const _0x266cdc=_0x5cf951;return this[_0x266cdc(0x10e)][_0x266cdc(0x117)]===_0x2fdaeb;}},'computed':{'pageChecker'(){const _0x48ba0b=_0x5cf951;return this[_0x48ba0b(0x10c)]==this[_0x48ba0b(0x10e)][_0x48ba0b(0x117)];}},'mounted'(){}}),_0xeebe37=[{'path':'/','name':_0x5cf951(0x10b),'component':Home},{'path':_0x5cf951(0x11d),'component':Coin}],_0x29dbd7=VueRouter[_0x5cf951(0x118)]({'history':VueRouter['createWebHashHistory'](),'routes':_0xeebe37});_0x101bcd[_0x5cf951(0x104)](_0x29dbd7)[_0x5cf951(0x10f)](_0x5cf951(0x114));}));function _0x5926(){const _0x3fbd00=['mount','addEventListener','227limUUL','Coins','2458peJjnq','#app','Home','98KYVJfr','path','createRouter','DOMContentLoaded','101391NxiUrx','toll','76UhOjjp','/coins','506538cMKjmU','use','234088VVZFiN','4284210lKanMQ','1510800hmlFxw','ref','55dQTtKj','1489970aAaJdO','home','currentPage','createApp','$route'];_0x5926=function(){return _0x3fbd00;};return _0x5926();}
+    </script>
+    <script src="./pages/home.js"></script>
+    <script src="./pages/coins.js"></script>
+    <script src="./js/vue.js" defer></script>
+    <script src="./js/vue-router.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</body>
+
+</html>

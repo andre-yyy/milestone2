@@ -64,6 +64,10 @@ func main() {
 		AllowHeaders: []string{echo.HeaderContentType, echo.HeaderAuthorization},
 	}))
 
+	e.File("/", "public/welcome.html")
+
+	e.Static("/store", "public")
+
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
 	userRepository := users.NewUserRepository(db)
