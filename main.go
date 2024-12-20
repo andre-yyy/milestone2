@@ -33,9 +33,11 @@ import (
 // @description Authentication for Milestone 2 API
 func main() {
 
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error load .env :", err)
+	if os.Getenv("ENV") != "production" {
+		err := godotenv.Load()
+		if err != nil {
+			log.Fatal("Error load .env :", err)
+		}
 	}
 
 	db, err := db.Connect()
