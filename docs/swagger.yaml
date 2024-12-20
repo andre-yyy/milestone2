@@ -258,7 +258,7 @@ definitions:
       updated_at:
         type: string
     type: object
-host: localhost:8080
+host: ftgohacktiv8milestone2-3e32a9bf8f46.herokuapp.com
 info:
   contact: {}
   description: Milestone 2 API

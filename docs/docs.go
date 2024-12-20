@@ -1047,7 +1047,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "localhost:8080",
+	Host:             "ftgohacktiv8milestone2-3e32a9bf8f46.herokuapp.com",
 	BasePath:         "",
 	Schemes:          []string{},
 	Title:            "Milestone 2 API",

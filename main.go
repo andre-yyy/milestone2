@@ -26,7 +26,7 @@ import (
 // @title Milestone 2 API
 // @version 1.0
 // @description Milestone 2 API
-// @host localhost:8080
+// @host ftgohacktiv8milestone2-3e32a9bf8f46.herokuapp.com
 // @securityDefinitions.apiKey Auth
 // @in header
 // @name Authorization
