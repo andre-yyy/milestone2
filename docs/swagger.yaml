@@ -621,8 +621,6 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/entity.ServerResponse'
-      security:
-      - Auth: []
       summary: Login user
       tags:
       - Milestone 2
@@ -653,8 +651,6 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/entity.ServerResponse'
-      security:
-      - Auth: []
       summary: Register user
       tags:
       - Milestone 2

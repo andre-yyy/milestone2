@@ -525,11 +525,6 @@ const docTemplate = `{
         },
         "/users/login": {
             "post": {
-                "security": [
-                    {
-                        "Auth": []
-                    }
-                ],
                 "description": "Login user",
                 "consumes": [
                     "application/json"
@@ -582,11 +577,6 @@ const docTemplate = `{
         },
         "/users/register": {
             "post": {
-                "security": [
-                    {
-                        "Auth": []
-                    }
-                ],
                 "description": "Register user",
                 "consumes": [
                     "application/json"

@@ -518,11 +518,6 @@
         },
         "/users/login": {
             "post": {
-                "security": [
-                    {
-                        "Auth": []
-                    }
-                ],
                 "description": "Login user",
                 "consumes": [
                     "application/json"
@@ -575,11 +570,6 @@
         },
         "/users/register": {
             "post": {
-                "security": [
-                    {
-                        "Auth": []
-                    }
-                ],
                 "description": "Register user",
                 "consumes": [
                     "application/json"

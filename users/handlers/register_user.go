@@ -16,7 +16,6 @@ import (
 // @summary Register user
 // @description Register user
 // @tags Milestone 2
-// @security Auth
 // @accept json
 // @produce json
 // @param user body dto.RegisterUserDto true "User"

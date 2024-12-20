@@ -14,7 +14,6 @@ import (
 // @summary Login user
 // @description Login user
 // @tags Milestone 2
-// @security Auth
 // @accept json
 // @produce json
 // @param user body dto.LoginUserDto true "User"
