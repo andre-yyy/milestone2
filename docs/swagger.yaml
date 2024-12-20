@@ -1,0 +1,667 @@
+definitions:
+  dto.CreateOrderDto:
+    properties:
+      product_id:
+        type: integer
+      rent_days:
+        type: integer
+    type: object
+  dto.LoginUserDto:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  dto.RegisterUserDto:
+    properties:
+      email:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      password:
+        type: string
+    type: object
+  dto.UpdateOrderStatusDto:
+    properties:
+      status:
+        type: string
+    type: object
+  entity.Activity:
+    properties:
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      user_id:
+        type: string
+    type: object
+  entity.Category:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  entity.Coin:
+    properties:
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      price:
+        type: number
+    type: object
+  entity.Invoice:
+    properties:
+      id:
+        type: string
+      invoice_url:
+        type: string
+    type: object
+  entity.Order:
+    properties:
+      created_at:
+        type: string
+      destination_id:
+        type: string
+      end_date:
+        type: string
+      id:
+        type: integer
+      product_id:
+        type: integer
+      rent_days:
+        type: integer
+      start_date:
+        type: string
+      status:
+        type: string
+      total_price:
+        type: number
+      updated_at:
+        type: string
+      user_id:
+        type: string
+    type: object
+  entity.Product:
+    properties:
+      category_id:
+        type: integer
+      daily:
+        type: number
+      description:
+        type: string
+      id:
+        type: integer
+      image_url:
+        type: string
+      name:
+        type: string
+      rental_cost:
+        type: number
+      stock:
+        type: integer
+      weight:
+        type: integer
+    type: object
+  entity.ServerResponse:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+    type: object
+  entity.ServerResponseData-array_entity_Activity:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/entity.Activity'
+        type: array
+      message:
+        type: string
+    type: object
+  entity.ServerResponseData-array_entity_Category:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/entity.Category'
+        type: array
+      message:
+        type: string
+    type: object
+  entity.ServerResponseData-array_entity_Coin:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/entity.Coin'
+        type: array
+      message:
+        type: string
+    type: object
+  entity.ServerResponseData-array_entity_Order:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/entity.Order'
+        type: array
+      message:
+        type: string
+    type: object
+  entity.ServerResponseData-array_entity_Product:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/entity.Product'
+        type: array
+      message:
+        type: string
+    type: object
+  entity.ServerResponseData-array_entity_Topup:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/entity.Topup'
+        type: array
+      message:
+        type: string
+    type: object
+  entity.ServerResponseData-entity_Order:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/entity.Order'
+      message:
+        type: string
+    type: object
+  entity.ServerResponseData-entity_User:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/entity.User'
+      message:
+        type: string
+    type: object
+  entity.Topup:
+    properties:
+      created_at:
+        type: string
+      external_id:
+        type: string
+      id:
+        type: integer
+      status:
+        type: string
+      user_id:
+        type: string
+    type: object
+  entity.TopupInvoice-entity_Coin:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/entity.Coin'
+      invoice:
+        $ref: '#/definitions/entity.Invoice'
+      message:
+        type: string
+    type: object
+  entity.TopupInvoice-entity_Product:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/entity.Product'
+      invoice:
+        $ref: '#/definitions/entity.Invoice'
+      message:
+        type: string
+    type: object
+  entity.User:
+    properties:
+      address:
+        type: string
+      city_id:
+        type: string
+      created_at:
+        type: string
+      deposit:
+        type: number
+      email:
+        type: string
+      full_name:
+        type: string
+      id:
+        type: string
+      role:
+        type: string
+      updated_at:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: Milestone 2 API
+  title: Milestone 2 API
+  version: "1.0"
+paths:
+  /categories:
+    get:
+      consumes:
+      - application/json
+      description: Get all categories
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.ServerResponseData-array_entity_Category'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+      summary: Get all categories
+      tags:
+      - Milestone 2
+  /coins:
+    get:
+      consumes:
+      - application/json
+      description: Get all coins
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.ServerResponseData-array_entity_Coin'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+      summary: Get all coins
+      tags:
+      - Milestone 2
+  /coins/{coinID}:
+    get:
+      description: Get coin by id
+      parameters:
+      - description: coinID
+        in: path
+        name: coinID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entity.TopupInvoice-entity_Coin'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+      security:
+      - Auth: []
+      summary: Get coin by id
+      tags:
+      - Milestone 2
+  /orders:
+    get:
+      description: Get all orders
+      parameters:
+      - description: Status
+        in: query
+        name: status
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.ServerResponseData-array_entity_Order'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+      security:
+      - Auth: []
+      summary: Get all orders
+      tags:
+      - Milestone 2
+    post:
+      consumes:
+      - application/json
+      description: Create order
+      parameters:
+      - description: Order
+        in: body
+        name: order
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateOrderDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entity.ServerResponseData-entity_Order'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+      security:
+      - Auth: []
+      summary: Create order
+      tags:
+      - Milestone 2
+  /orders/{orderID}:
+    patch:
+      consumes:
+      - application/json
+      description: Update order status by id
+      parameters:
+      - description: orderID
+        in: path
+        name: orderID
+        required: true
+        type: integer
+      - description: Order
+        in: body
+        name: order
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateOrderStatusDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.ServerResponseData-entity_Order'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+      security:
+      - Auth: []
+      summary: Update order status by id
+      tags:
+      - Milestone 2
+  /orders/overdue:
+    get:
+      description: Get all overdue orders
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.ServerResponseData-array_entity_Order'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+      security:
+      - Auth: []
+      summary: Get all overdue orders
+      tags:
+      - Milestone 2
+  /products:
+    get:
+      description: Get all products
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.ServerResponseData-array_entity_Product'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+      summary: Get all products
+      tags:
+      - Milestone 2
+  /products/{productID}:
+    get:
+      description: Get product by id
+      parameters:
+      - description: productID
+        in: path
+        name: productID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.TopupInvoice-entity_Product'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+      summary: Get product by id
+      tags:
+      - Milestone 2
+  /topups:
+    get:
+      description: Get all topups
+      parameters:
+      - description: Status
+        in: query
+        name: status
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.ServerResponseData-array_entity_Topup'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+      security:
+      - Auth: []
+      summary: Get all topups
+      tags:
+      - Milestone 2
+  /users/activities:
+    get:
+      description: Get all user activities
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.ServerResponseData-array_entity_Activity'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+      security:
+      - Auth: []
+      summary: Get all user activities
+      tags:
+      - Milestone 2
+  /users/login:
+    post:
+      consumes:
+      - application/json
+      description: Login user
+      parameters:
+      - description: User
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/dto.LoginUserDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.ServerResponseData-entity_User'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+      security:
+      - Auth: []
+      summary: Login user
+      tags:
+      - Milestone 2
+  /users/register:
+    post:
+      consumes:
+      - application/json
+      description: Register user
+      parameters:
+      - description: User
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/dto.RegisterUserDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entity.ServerResponseData-entity_User'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.ServerResponse'
+      security:
+      - Auth: []
+      summary: Register user
+      tags:
+      - Milestone 2
+securityDefinitions:
+  Auth:
+    description: Authentication for Milestone 2 API
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
